@@ -1,0 +1,51 @@
+= MM Logged Time
+
+Logging of query time and load time for MongoMapper, like so:
+
+[example here]
+
+== Installation
+
+Add mm-logged-time to your Gemfile:
+
+	gem 'mm-logged-time'
+
+You may wish to only include it in your development group:
+
+	group :development do
+		gem 'mm-logged-time'
+	end
+
+You need to have MongoMapper set up with a logger, for example (in mongo_config.rb):
+	
+	MongoMapper.connection = Mongo::Connection.new('localhost', 27017, :logger => Rails.logger)
+
+Then turn on the logged time:
+
+	MongoMapper.logged_time_level = Logger::DEBUG
+
+To turn it off either set the logger to a less verbose level, or:
+
+	MongoMapper.logged_time_level = nil
+
+That's it.  Happy logging!
+
+== Warning
+
+The only want to separate out MongoMappers's load and query was to totally clobber some functions in MM's source.  Future updates to MongoMapper could cause this gem to break your app.
+
+Of course, gem updates to an app are always fickle in my experience.  Please don't be deterred from using mm-logged-time.  Gem updates == breakage.  Just be aware that mm-logged-time could be the culprit if you update MongoMapper.
+
+== Development/Tests
+
+	gem install bundler
+	bundle
+	bundle exec rake
+
+== Pull Requests
+
+Pull requests, bug reports, and feedback are welcome!
+
+== License
+
+Public domain.
