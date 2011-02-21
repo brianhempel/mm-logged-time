@@ -24,10 +24,13 @@ You may wish to only include it in your development group:
 	  gem 'mm-logged-time'
 	end
 
-Once you have MongoMapper set up with a logger, you can turn on logged time. For example, in mongo_config.rb:
-	
-	MongoMapper.connection = Mongo::Connection.new('localhost', 27017, :logger => Rails.logger)
-	MongoMapper.logged_time_level = Logger::DEBUG
+Once you have MongoMapper set up with a logger, you can turn on logged time. You don't need to be running Rails, but for example in my Rails app I have this in mongo_config.rb:
+
+	if Rails.env == "development"
+	  MongoMapper.connection = Mongo::Connection.new('localhost', 27017, :logger => Rails.logger)
+	  require 'mm_logged_time' # this overrides first, last, and all
+	  MongoMapper.logged_time_level = Logger::DEBUG
+	end
 
 To turn it off either set the logger to a less verbose level, or:
 
