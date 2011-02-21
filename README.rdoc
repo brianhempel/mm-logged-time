@@ -1,6 +1,6 @@
 = MM Logged Time
 
-Logging of query time and load time for MongoMapper, like so:
+MM Logged Time logs query and load times for MongoMapper, like so:
 
 	(0.5ms) all query mm-test-1-8-7.parakeets {:name=>"Bro"}
 	(0.1ms) all load  mm-test-1-8-7.parakeets {:name=>"Bro"}
@@ -9,6 +9,8 @@ Load time is logged separately because sometimes MongoMapper, not MongoDB, is th
 
 	(48.6ms) all query mes-geo.places {:ancestor_ids=>2347581, ... }
 	(623.7ms) all load  mes-geo.places {:ancestor_ids=>2347581, ... }
+
+When you run into such a problem you may have to skip MongoMapper and use the Mongo Ruby driver, or hack a MongoMapper document that doesn't use the Dirty plugin.  (Removing the Dirty plugin can halve the load time.  The Ruby driver is even faster, its "load time" is already reflected in the query time above.)
 
 == Installation
 
