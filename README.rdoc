@@ -5,7 +5,7 @@ Logging of query time and load time for MongoMapper, like so:
 	(0.5ms) all query mm-test-1-8-7.parakeets {:name=>"Bro"}
 	(0.1ms) all load  mm-test-1-8-7.parakeets {:name=>"Bro"}
 
-Load time is logged separate because sometimes MongoMapper, not MongoDB, is the bottleneck:
+Load time is logged separately because sometimes MongoMapper, not MongoDB, is the bottleneck:
 
 	(48.6ms) all query mes-geo.places {:ancestor_ids=>2347581, ... }
 	(623.7ms) all load  mes-geo.places {:ancestor_ids=>2347581, ... }
