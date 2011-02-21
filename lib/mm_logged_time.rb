@@ -1,4 +1,5 @@
 require 'logger'
+require 'benchmark'
 require 'mongo_mapper'
 
 module MmLoggedTime
